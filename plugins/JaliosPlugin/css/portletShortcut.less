@@ -1,0 +1,172 @@
+// Embarque la jsp plugins/PortletShortcutPlugin/css/portletShortcut.less du plugin PortletShortcutPlugin version="1.1.2"
+
+// Include variables and mixins
+@import "../../../css/jalios/core/init.less"; // Use init-mixins.less if more mixins are required 
+@import "generated-variables.less";
+@import "_variables.less";
+// Tips of Wisen
+@import "co-tips.less";
+// -------------------------------------------------------------------
+// Hook for JCMS
+// -------------------------------------------------------------------
+@import "../../../css/plugin.less";
+@import "../../../css/plugin.less";
+
+@layout-gutter: 7px;
+@layout-gutter-double: @layout-gutter*2;
+
+
+.portletShortcut {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center; // Surcharge JPlatformSkinPlugin
+//  -webkit-box-pack: justify;
+//  -ms-flex-pack: justify;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+//  margin-left: -@layout-gutter;
+//  margin-right: -@layout-gutter;
+  background-color: #F9F9F9;
+  // Stack latest item on left
+  &:after {
+    content: "";
+    flex: auto;
+    flex-basis: auto;
+  }
+          
+  > A {
+    font-size: 12px;
+    font-family: embedded-roboto, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-bottom: @layout-gutter; // Surcharge JPlatformSkinPlugin
+    margin-left: @layout-gutter;
+    margin-right: @layout-gutter;
+    display: flex;
+    justify-content: center;
+    padding: 0; // Surcharge JPlatformSkinPlugin
+  }
+    
+  &.show-icon > A {
+    flex-direction: column;
+    border: 0 none transparent;
+    border: 1px solid transparent; 
+    background: transparent;   
+    min-width: 0;
+    &:hover, &:active, &:focus {
+		box-shadow: none;
+		background-color: transparent;
+		border-color: transparent;
+	}
+    &:hover {
+      //border: 1px solid #E8E8E8; // Surcharge JPlatformSkinPlugin
+    }
+    
+    .icon-wrapper {
+      display: inline-block;
+      position: relative;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 8px;
+      margin-left: auto;
+      margin-right: auto;
+      // Start Surcharge JPlatformSkinPlugin
+      background-color: white; 
+      border-radius: 10px; 
+      border-bottom-right-radius: 0; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+          background-color: @main-color;
+          .transition-jpskin();
+    }
+      // End Surcharge JPlatformSkinPlugin
+      > img {
+        width: 25px; // Surcharge JPlatformSkinPlugin
+        height: 25px; // Surcharge JPlatformSkinPlugin
+        border-radius: 6px;
+      }
+    }
+    
+    .label-wrapper {
+      color: #333;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: none; // Surcharge JPlatformSkinPlugin
+    }
+
+  }
+  &.shortcut-count-6 > A {
+    flex-basis: calc(~"16.66%" - @layout-gutter-double);
+    .card {
+      -ms-flex-basis: 0;
+      flex-basis: initial;
+    }
+  }
+
+  &.shortcut-count-5 > A {
+    flex-basis: calc(~"20%" - @layout-gutter-double);
+    .card {
+      -ms-flex-basis: 0;
+      flex-basis: initial;
+    }
+  }
+
+  &.shortcut-count-4 {
+	padding: 27px 27px 20px 20px; // Surcharge JPlatformSkinPlugin
+	@media screen and (max-width: 1199px){
+		padding: 16px 10px 0px 0px;
+	}
+	> A {
+        flex-basis: calc(~"25%" - @layout-gutter-double);
+        .card {
+          -ms-flex-basis: 0;
+          flex-basis: initial;
+        }
+    }
+  }
+
+  &.shortcut-count-3 {
+	padding: 25px 50px 11px 50px;  // Surcharge JPlatformSkinPlugin
+	@media screen and (max-width: 1199px){
+			padding: 25px 30px 11px 25px;
+	}
+	> A {
+    flex-basis: calc(~"33.33%" - @layout-gutter-double);
+    .card {
+      -ms-flex-basis: 0;
+      flex-basis: initial;
+    }
+  }
+} 
+
+  &.shortcut-count-2 {
+	padding: 25px 75px 11px 75px;  // Surcharge JPlatformSkinPlugin
+	@media screen and (max-width: 1199px){
+		padding: 25px 55px 11px 55px;  // Surcharge JPlatformSkinPlugin
+	}
+	> A { 
+        flex-basis: calc(~"50%" - @layout-gutter-double);
+        .card {
+         -ms-flex-basis: 0;
+         flex-basis: initial;
+    }
+}
+  }
+
+  &.shortcut-count-1 {
+	padding: 25px 50px 11px 50px;  // Surcharge JPlatformSkinPlugin
+	> A { 
+        flex-basis: calc(~"100%" - @layout-gutter-double);
+        .card {
+            -ms-flex-basis: 0;
+            flex-basis: initial;
+        }
+    }
+  } 
+  
+} // .portletShortcut

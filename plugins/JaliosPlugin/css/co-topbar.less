@@ -1,0 +1,126 @@
+// -------------------------------------------------------------------
+// Summury
+// -------------------------------------------------------------------
+//  .topbar standard
+//  .topbar-dark
+
+
+// -------------------------------------------------------------------
+// topbar standard
+// -------------------------------------------------------------------
+.jpskin{
+	
+	.topbar-wrapper{
+		.container-menu-jpskin{
+			margin-top: 64px;
+		}
+		.topbar-navigation-menu .topbar-navigation-menu-items > LI > A {
+			&:hover {
+				color: @main-color;
+			}
+			&:after {
+				background-color: @main-color;
+			}
+		}
+	}
+	
+	.topbar{
+		.topbar-inner{
+			.topbar-item.topbar-search-wrapper{
+				
+				@media (max-width: 1200px){
+					width: 200px;
+				}
+				
+				.search-container{
+					.topbar-search-query{
+						border-radius: 5px;
+						border: none;
+						background: #f0f0f0;
+						-webkit-box-shadow: 0px 3px 2px 0px rgba(230,230,230,1);
+						-moz-box-shadow: 0px 3px 2px 0px rgba(230,230,230,1);
+						box-shadow: 0px 1px 1px 0px rgba(230,230,230,1);
+						
+						&:focus + .btn, &:hover + .btn{
+							background: transparent;
+						}
+						
+						&:focus + .btn:hover{
+							background: transparent;
+						}
+					}
+					
+					.btn-topbar-search{
+						background: transparent;
+						border-radius: 0;
+						color: @main-color;
+						font-size: 18px;
+						
+						span{
+							color: @jpskin-grey;
+							font-size: 20px;
+							
+							&:before{
+								content: "\eb36";
+							}
+							
+							&:hover, &:active{
+								color: @action-color;
+							}
+						}
+						
+						&:hover, &:active{
+							background: transparent;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// -------------------------------------------------------------------
+// topbar-dark
+// -------------------------------------------------------------------
+.jpskin.topbar-dark{
+	.topbar-wrapper{
+		.topbar{
+			background-color: @jpskin-black;
+		
+			.topbar-inner{
+				.topbar-item.topbar-search-wrapper{
+					
+					@media (max-width: 1200px){
+						width: 200px;
+					}
+					
+					.search-container{
+						.topbar-search-query{
+							border-radius: 5px;
+							border: none;
+							background: #565656;
+							color: @jpskin-white-dark;
+							-webkit-box-shadow: 0px 3px 2px 0px #565656;
+							-moz-box-shadow: 0px 3px 2px 0px #565656;
+							box-shadow: 0px 1px 1px 0px #565656;
+						}
+						
+						.btn-topbar-search{
+							color: #8a8a8a;
+							span{
+								color: #8a8a8a;
+							}
+						}
+					}
+				}
+			}
+			
+			.topbar-item > A, A.topbar-item{
+				&:hover,&:focus{
+					color: @jpskin-white-dark;
+				}
+			}
+		}
+	}
+}

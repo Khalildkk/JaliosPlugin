@@ -1,0 +1,227 @@
+// -------------------------------------------------------------------
+// Summury
+// -------------------------------------------------------------------
+//  .carousel-jpskin
+
+
+// -------------------------------------------------------------------
+// carousel-jpskin
+// -------------------------------------------------------------------
+.carousel-jpskin{
+	margin-top: 16px;
+	.slick-carousel-jpskin{
+		.slick-carousel-caption{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			display: flex;
+			margin: auto;
+			background: rgba(0, 0, 33, 0.3);
+		}
+		.slick-pub.slick-jpskin .slick-carousel-caption{
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		.slick-carousel-caption-content{
+			text-align: center;
+			margin: auto;
+			max-width: 70%;
+			.title{
+				.ff-ms();
+				.font-size(3.2);
+				line-height: 60px;
+				font-weight: 700;
+				margin-bottom: 3rem;
+				@media screen and (min-width: 768px){
+					.font-size(5.2);
+				}
+			}
+			
+			.desc{
+				.font-size(1.26);
+				line-height: 33px;
+				color: @jpskin-grey-blue;
+				margin-bottom: 4rem;
+				@media screen and (min-width: 768px){
+					.font-size(2.2);
+				}
+			}
+			button {
+				.ff-ms;
+				color: @jpskin-black;
+				.fs-16;
+				padding: 7px 40px;
+				border-radius: 10px;
+				.no-border;
+				.transition-jpskin();
+				&:hover {
+					color: @contrast-main-color;
+					background: @main-color;
+					
+				}
+			}
+		}
+		
+		.slide-arrow{
+			height: 100%;
+			text-shadow: none;
+			@media screen and (min-width: 768px){
+				width: 100px;
+			}
+			
+			&.next-arrow,&.prev-arrow{
+				&:before{
+					border: 1px solid rgba(255,255,255, 0.4);
+					padding: 10px;
+					.font-size(2.0);
+					background: @jpskin-grey-light-2;
+					.transition-jpskin-slow();
+					@media screen and (min-width: 768px){
+						padding: 14px 32px;
+						.font-size(1.8);
+					}
+				}
+				&:hover {
+					&:before {
+						color: @main-color;
+					}
+				}
+				
+			}
+			&.next-arrow {
+				justify-content: end;
+				&:before{
+					content: "\edde";
+					color: @jpskin-grey-mi-light;
+					border-top-left-radius: 10px;
+					border-bottom-left-radius: 10px;
+					.no-border;
+				}
+				
+			}
+			&.prev-arrow {
+				justify-content: start;
+				&:before{
+					content: "\ede2";
+					color: @jpskin-grey-mi-light;
+					border-top-right-radius: 10px;
+					border-bottom-right-radius: 10px;
+					.no-border;
+				}
+				
+			}
+		}
+		
+		&.no-dots .slick-dots{
+			display: none !important;
+		}
+		&.slick-dotted .slick-dots {
+			position: absolute;
+			right: 0;
+			left: 0;
+			padding: 0;
+			li {
+				margin: 0;
+			}
+			button {
+				background-color: @jpskin-grey-mi-light;
+				width: 12px;
+				height: 12px;
+				border: none;
+			}
+		}
+	}
+	
+	.slick-nav-jpskin{
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		background-color: @jpskin-white-dark;
+		box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.11);
+		
+		@media screen and (max-width: 768px){
+			display: none;
+		}
+		
+		.slick-slide{
+			display: inline-block;
+			cursor: pointer;
+			.transition-jpskin();
+			position: relative;
+			
+			& + .slick-slide{
+				.slick-item{
+					border-left: 1px solid @jpskin-grey-light;
+				}
+			}
+			
+			&:before{
+				content: "";
+				height: 25px;
+				width: 25px;
+				background-color: @jpskin-white-dark;
+				position: absolute;
+				top: 5px;
+				left: 0;
+				right: 0;
+				border-radius: 2px;
+				.rotate(45deg);
+				z-index: -1;
+				margin: auto;
+				.transition-jpskin();
+			}
+			
+			&:hover,&:focus{
+				&:before{
+					top: -7px;
+				}
+			}
+			.small-tag{
+				background-color : @jpskin-grey-light;
+				color: @jpskin-black;
+			}
+			
+			&.slick-current{
+				background-color: @fake-hover-color;
+				
+				&:before{
+					top: -7px;
+					background-color: @fake-hover-color;
+				}
+				
+				.title{
+					font-weight: bold;
+				}
+			}
+			
+			.slick-item{
+				padding: 15px 25px;
+				
+				@media screen and (min-width: 991px){
+					padding: 35px 50px;
+				}
+				
+				.container-tags {
+					max-width: 100%;
+					max-height: 24px;
+					min-height: 24px;
+					overflow: hidden;
+				}
+				.title{
+					line-height: 18px;
+					font-weight: 400;
+					margin: 0;
+					color: @jpskin-black;
+					
+					@media screen and (max-width: 991px){
+						.font-size(1.4);
+						.multiline-text-overflow-ellipsis(14px, 1.15em, 2, 100%, 0);
+					}
+					@media screen and (min-width: 992px){
+						.font-size(1.6);
+						.multiline-text-overflow-ellipsis(16px, 1.15em, 2, 100%, 0);
+					}
+				}
+			}
+		}
+	}
+}

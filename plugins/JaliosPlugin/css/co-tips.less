@@ -1,0 +1,441 @@
+@import (reference)"_variables.less";
+// -------------------------------------------------------------------
+// Summary
+// -------------------------------------------------------------------
+//  .font-size(xx)     Fonction pour gérer Rem et Pixel
+//  .little-row        Customize Padding for bootstrap rows
+//  .bg-xx .co-xx      Couleurs & fond dynamique
+//  .bg-opac-xx        ajoute un background opaque en background
+//  .ta-xx             Text-align
+//  .d-xx              Display
+//  .p-xx              Position
+//  .w-xx              Width & height
+//  .br-xx             Border-radius
+//  .rotate-xx        Rotate call rotate bootstrap
+//  .ratio-16-9        Img ratio 16/9
+//  .panel-clean        Panel clean up
+//  Other effects
+//		.hover-item
+//		.text-no-wrap
+//		.fpv-transition
+//		.box-shadow-xx
+//		.protect-write
+//		.multiline-text-overflow-ellipsis(xx)
+//		.block-webkit-autofill(@color)
+//		.fade-in-2s
+//		.mx-xx .px-xx                                Margin & padding
+
+
+
+
+// -------------------------------------------------------------------
+// Ajout de la media-queries écran large.
+// -------------------------------------------------------------------
+@media (min-width: 1400px) {
+	.container {
+		width: 1370px;
+	}
+}
+// -------------------------------------------------------------------
+// Fonction pour gérer Rem et Pixel en fonction des supports des navigateurs
+// -------------------------------------------------------------------
+.font-size(@sizeValue) {
+	@remValue: @sizeValue;
+	@pxValue: (@sizeValue * 10);
+	font-size: ~"@{pxValue}px"; 
+	font-size: ~"@{remValue}rem";
+}
+
+// -------------------------------------------------------------------
+// Customize Padding for bootstrap rows
+// -------------------------------------------------------------------
+@margin-little-row : 5px;
+.little-row{
+	margin-right: - @margin-little-row;
+	margin-left:  - @margin-little-row;
+
+	& >.col, & >[class*=col-],
+	.slick-slide > div > .col, .slick-slide > div > [class*=col-]{
+		padding-right: @margin-little-row;
+		padding-left: @margin-little-row;
+	}
+}
+
+// -------------------------------------------------------------------
+// Couleurs & fond dynamique
+// -------------------------------------------------------------------
+@colors: main-color, action-color, contrast-main-color, contrast-action-color;
+
+// MIXIN
+.make-colors-bg-co(@colors) {
+	.gen-color(@index) when (@index =< length(@colors)) {
+		@name:  extract(@colors, @index);
+
+		.bg-@{name} {background-color: @@name}
+		.co-@{name} {color: @@name}
+		.co-@{name}-hover:hover{color: @@name}
+		.bg-@{name}-before::before{background-color: @@name;}
+		
+		.gen-color(@index + 1);
+	}
+	.gen-color(1);
+}
+// Generate mixin
+.make-colors-bg-co(@colors);
+
+.bg-transparent {
+	background: transparent;
+}
+
+// -------------------------------------------------------------------
+// Text-align
+// -------------------------------------------------------------------
+.ta-left{text-align: left;}
+.ta-right{text-align: right;}
+.ta-center{text-align: center;}
+
+// -------------------------------------------------------------------
+// Display
+// -------------------------------------------------------------------
+.d-none{display: none;	}
+.d-inline{display: inline;}
+.d-inline-block{display: inline-block;}
+.d-inline-flex{display: inline-flex;}
+.d-block{display: block;}
+.d-table{display: table;}
+.d-flex{display: flex;}
+
+.fg-1{flex-grow: 1;}
+
+.o-hidden{overflow:hidden;}
+.ox-hidden{overflow-x:hidden;}
+.oy-hidden{overflow-y:hidden;}
+.hide-if-empty{display: none;}
+
+// -------------------------------------------------------------------
+// Position
+// -------------------------------------------------------------------
+.p-relative{position: relative;}
+.p-absolute{position: absolute;}
+.p-inherit{position: inherit;}
+.p-initial{position: initial;}
+.p-fixed{position: fixed;}
+.p-sticky{position: sticky;}
+.p-unset{position: unset;}
+.p-static{position: static;}
+
+// -------------------------------------------------------------------
+// Justify-content
+// -------------------------------------------------------------------
+.jc-center{justify-content: center;}
+.jc-end{justify-content: flex-end;}
+.jc-between{justify-content: space-between;}
+
+// -------------------------------------------------------------------
+// Align-items
+// -------------------------------------------------------------------
+.align-items-center{align-items: center;}
+
+// -------------------------------------------------------------------
+// Width & height
+// -------------------------------------------------------------------
+.w-0{width:0;}
+.w-10{width:10%;}
+.w-15{width:15%;}
+.w-20{width:20%;}
+.w-25{width:25%;}
+.w-30{width:30%;}
+.w-35{width: 35%;}
+.w-40{width:40%;}
+.w-50{width:50%;}
+.w-55{width:55%;}
+.w-60{width:60%;}
+.w-70{width:70%;}
+.w-80{width:80%;}
+.w-90{width:90%;}
+.w-95{width:95%;}
+.w-100{width:100%;}
+.w-25{width:25%;}
+.w-75{width:75%;}
+.w-33{width:33,3333%;}
+.w-66{width:66,6666%;}
+.w-90{width: 90%;}
+
+.h-20{height: 20px;}
+.h-100{
+	@media screen and (min-width: 768px){
+		height: 100%;
+		&.next-div-100{
+			> div{
+				height: 100%;
+			}
+		}
+	}
+}
+
+.h-viewport{ height: 100vh !important; }
+
+// -------------------------------------------------------------------
+// Border-radius
+// -------------------------------------------------------------------
+@br : 6px;
+
+.br-0 {border-radius: 0;}
+
+.br {border-radius: @br;}
+.br-top {border-top-left-radius: @br;border-top-right-radius: @br;}
+.br-bottom {border-bottom-left-radius: @br;border-bottom-right-radius: @br;}
+.br-left {border-bottom-left-radius: @br;border-top-left-radius: @br;}
+.br-right {border-bottom-right-radius: @br;border-top-right-radius: @br;}
+
+
+.br-round { -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; }
+.no-br{ -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
+
+
+// -------------------------------------------------------------------
+// Border
+// -------------------------------------------------------------------
+.no-border{
+	border: none;
+}
+
+// -------------------------------------------------------------------
+// Img ratio
+// -------------------------------------------------------------------
+.ratio-16-9 {
+	position: relative;
+	padding-bottom: 56.2%;
+	text-align: left;
+	
+	& > img, .portlet-image-img{
+		position: absolute;
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+	
+	> iframe{
+		position: absolute;
+		top: 0; 
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.ratio-1-1 {
+	position: relative;
+	padding-bottom:100%;
+	text-align: left;
+	
+	& > img, .portlet-image-img{
+		position: absolute;
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.container-ratio{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		
+		&.vert-align {
+			display: flex;
+			justify-content: center;
+		}
+	}
+	
+	> iframe{
+		position: absolute;
+		top: 0; 
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// -------------------------------------------------------------------
+// Panel clean up
+// -------------------------------------------------------------------
+.panel-clean{
+	box-shadow: inherit;
+	-webkit-box-shadow: inherit;
+	margin-bottom: inherit;
+	
+	&:not(.box-mdl){
+		border: 0;
+		border-radius: none;
+		background-color: transparent;
+	}
+	
+	.panel-heading{
+		padding: 0;
+		border-radius: none;
+		margin-top: 0;
+		
+		a{
+			text-decoration: none;
+		}
+	}
+	
+	.panel-body{
+		border-top: 0;
+		padding: 0;
+	}
+	
+	.panel-footer{
+		padding: 0;
+		border: 0;
+		background: inherit;
+		
+		a{
+			text-decoration: none;
+		}
+	}
+}
+
+// -------------------------------------------------------------------
+// Other effects
+// -------------------------------------------------------------------
+.hover-item (@color: @main-color, @contrast-color: inherit){
+	&:hover,&:focus{
+		background-color: fade(@color, 80%);
+		color: @contrast-color;
+		
+		.title,
+		.container-info p,
+		span{
+			color: @contrast-color;
+		}
+	}
+}
+
+.text-no-wrap{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 100%;
+}
+
+// Transition
+.transition-jpskin{
+	 transition: .2s cubic-bezier(.4,0,1,1),
+				background-color .2s cubic-bezier(.4,0,.2,1),
+				color .2s cubic-bezier(.4,0,.2,1);
+}
+
+.transition-jpskin-slow{
+	 transition: .3s cubic-bezier(.4,0,1,1),
+				background-color .3s cubic-bezier(.4,0,.2,1),
+				color .3s cubic-bezier(.4,0,.2,1);
+}
+
+// Shadow
+.box-shadow-menu{ box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.24);}
+
+// Multiline Overflow /!\ -> Font-size: px | line-height: em | max-line : number | max-width : as you want | offset: px
+.multiline-text-overflow-ellipsis(@font-size, @line-height, @max-lines, @max-width, @offset) {
+	display: block;
+	display: -webkit-box;
+	max-width: @max-width;
+	height: @font-size*@line-height*@max-lines + @offset;
+	font-size: @font-size;
+	line-height: @line-height;
+	-webkit-line-clamp: @max-lines;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+// -------------------------------------------------------------------
+// Animation fade in 2s
+// -------------------------------------------------------------------
+.fade-in-2s {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  -moz-animation: fadeIn ease 2s;
+  -o-animation: fadeIn ease 2s;
+  -ms-animation: fadeIn ease 2s;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  50% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  50% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  50% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  50% {opacity:0;}
+  100% {opacity:1;}
+}
+
+
+// -------------------------------------------------------------------
+// Margin & padding
+// -------------------------------------------------------------------
+@spaces: 0,2,5,10,15,20,25,30,35,40,45,50,55,60,65,70,80,85,90;
+
+// MIXIN
+.make-spaces(@spaces) {
+	.gen-space(@index) when (@index =< length(@spaces)) {
+		@name:  extract(@spaces, @index);
+		@val: ~"@{name}px";
+		
+		.mx-@{name} {margin-top: @val;margin-bottom: @val;}
+		.my-@{name} {margin-left: @val;margin-right: @val;}
+		.mt-@{name} {margin-top: @val;}
+		.mb-@{name} {margin-bottom: @val;}
+		.ml-@{name} {margin-left: @val;}
+		.mr-@{name} {margin-right: @val;}
+		.ma-@{name} {margin-top: @val; margin-right: @val; margin-bottom: @val; margin-left: @val;}
+		
+		.px-@{name} {padding-top: @val;padding-bottom: @val;}
+		.py-@{name} {padding-left: @val;padding-right: @val;}
+		.pt-@{name} {padding-top: @val;}
+		.pb-@{name} {padding-bottom: @val;}
+		.pl-@{name} {padding-left: @val;}
+		.pr-@{name} {padding-right: @val;}
+		.pa-@{name} {padding-top: @val; padding-right: @val; padding-bottom: @val; padding-left: @val;}
+		
+		.gen-space(@index + 1);
+	}
+	.gen-space(1);
+}
+// Generate mixin
+.make-spaces(@spaces);
+
+.mx-auto{margin-top: auto;margin-bottom: auto;}
+.my-auto{margin-left: auto;margin-right: auto;}
+
+@media (max-width: 767px) {
+	.no-my-xs{margin-left: 0;margin-right: 0;}
+}
+
+// jpskin margin
+.pt-45-desktop{
+	@media screen and (min-width: 767px){
+		padding-top: 45px;
+	}
+}

@@ -1,0 +1,20 @@
+// Init html
+html {
+	font-size: .625em;			  // fallback IE8+ 
+	font-size: calc(1em * .625); // IE9-IE11 math fixing.
+								// ".font-size(1.2);" 12px = 1,2em
+	
+}
+
+body{
+	color: @txt-color;
+	font-family: @site-settings-font;
+	.font-size(1.4);
+	background-color: @site-background-color;
+}
+
+.selection-wrapper{
+	.selection-body{
+		margin: 0;
+	}
+}

@@ -15,6 +15,7 @@
     <directory path="docs" />
     <directory path="jsp" />
     <directory path="images" />
+    <directory path="hostedFonts" />
   </public-files> 
 </plugin>
 

@@ -1,0 +1,51 @@
+// -------------------------------------------------------------------
+// Summary
+// -------------------------------------------------------------------
+//  .xxx         .class font  
+//  .fs-xx       ICON font-size
+//  ----         Title
+
+
+// -------------------------------------------------------------------
+// Class font
+// -------------------------------------------------------------------
+//.ff-ro{font-family: @ff-ro;}
+.ff-ro{font-family: @site-settings-font;} // Surcharge de la classe pour remplacer la typo Roboto par celle par défaut pour tous le site
+.ff-pt{font-family: @ff-pt;}
+.ff-ms{font-family: @site-settings-font-secondary;} // Surcharge de la classe pour remplacer la typo Monserrat par la secondaire par défaut pour tous le site
+.fw-3{font-weight: 300;}
+.fw-4{font-weight: 400;}
+.fw-5{font-weight: 500;}
+.fw-6{font-weight: 600;}
+.fw-7{font-weight: 700;}
+
+
+// -------------------------------------------------------------------
+// Font-size
+// -------------------------------------------------------------------
+.fs-10{.font-size(1);}
+.fs-12{.font-size(1.2);}
+.fs-13{.font-size(1.3);}
+.fs-14{.font-size(1.4);}
+.fs-15{.font-size(1.5);}
+.fs-16{.font-size(1.6);}
+.fs-18{.font-size(1.8);}
+.fs-20{.font-size(2.0);}
+.fs-22{.font-size(2.2);}
+.fs-24{.font-size(2.4);}
+.fs-30{.font-size(3);}
+.fs-36{.font-size(3.6);}
+.fs-52{.font-size(5.2);}
+
+// -------------------------------------------------------------------
+// Title
+// -------------------------------------------------------------------
+
+// For select and search in filter
+.title-ms{
+	.ff-ms();
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+

@@ -1,0 +1,431 @@
+// -------------------------------------------------------------------
+// Summury
+// -------------------------------------------------------------------
+//  .menu-jpskin              JPlatformSkin Menu principal
+//  .vertical-menu-jpskin     JPlatformSkin Menu vertical
+//  .horizontal-menu-jpskin   JPlatformSkin Menu horizontal 
+
+// -------------------------------------------------------------------
+// JPlatformSkin Menu
+// -------------------------------------------------------------------
+.topbar-wrapper > .PortalMode{
+	border: 0;
+}
+
+.topbar-jpskin.topbar-navigation-menu-wrapper{
+	
+	.topbar-pull.pull-jpskin{
+		display: none;
+	}
+	
+	@media screen and (min-width: 768px){
+		
+		.topbar-pull.pull-jpskin{
+			display: block;
+		}
+		
+		.container-menu-jpskin{
+			margin-top: 15px;
+			transition: margin 300ms ease;
+		}
+		
+		&.is-expanded {
+			
+			.container-menu-jpskin{
+				margin-top: 64px;
+			}
+		}
+	}
+}
+
+.container-menu-jpskin{
+	
+	.menu-jpskin{
+		background: @main-color;
+		
+		a{
+			text-decoration: none;
+		}
+		
+		.burger {
+			height: 50px;
+			width: 35px;
+			display: inline-block;
+			background: none;
+			border: 0;
+			padding: 0;
+			outline: none;
+			margin-left: 15px;
+			
+			&:hover,&:focus{
+				span{
+					background-color: @action-color;
+				}
+			}
+			
+			span {
+				display: block;
+				width: 100%;
+				background: @contrast-main-color;
+				height: 3px;
+				margin-top: 8px;
+				transition: all .25s;
+			}
+			
+			&:not(.collapsed){ 
+				
+				span:first-child {
+					transform: rotate(45deg) translate(8px, 8px);
+				}
+				
+				span:nth-child(2) {
+					width: 0%;
+					opacity: 0;
+				}
+				
+				span:last-child {
+					transform: rotate(-45deg) translate(8px, -8px);
+				}
+			}
+		}	
+		
+		.menu-collapse{
+			padding-bottom: 10px;
+			z-index: 1040;
+			
+			.container-logo{
+				margin: 10px;
+				img{
+					width: 120px;
+					text-align: center;
+				}
+			}
+			
+			.container-nav-jpskin{
+				padding: 0;
+			}
+			
+			.container-a{
+				position: relative;
+				
+				> a{
+					display: block;
+					color: @contrast-main-color;
+					.font-size(1.6);
+					padding: 12px 15px;
+					font-weight: 400;
+					.transition-jpskin();
+					
+					&:hover,&:focus,
+					&.current{
+						border-left: 4px solid @jpskin-white;
+						
+						.icon,.text{
+							opacity: 1;
+						}
+					}
+					
+					.icon{
+						vertical-align: middle;
+						margin-right: 15px;
+						opacity: 0.8;
+					}
+					
+					.text{
+						vertical-align: middle;
+						opacity: 0.8;
+					}
+					
+					&.list-group-item-submenu{
+						background-color: inherit;
+					}
+				}
+			}
+			
+			.submenu{
+				.list-group-item {
+					border: 0;
+					padding: 10px 55px;
+					font-weight: bold;
+					background: transparent;
+					color: @jpskin-white;
+					
+					&:first-child {
+						border-radius: 0;
+					}
+					
+					&.current{
+						border-left: 4px solid @jpskin-white;
+					}
+					
+					& + .list-group-item{
+						border-top: 1px solid rgba(0, 0, 0, 0.1);
+					}
+				}
+			}
+			
+			// On mobile
+			@media (max-width: 991px){
+				background: @main-color;
+				width: 100%;
+				position: fixed;
+				left: -100%;
+				height: 100vh;
+				.transition-jpskin();
+				
+				.container{
+					width: 100%;
+				}
+				
+				&.active{
+					left:0;
+				}
+			}
+			
+			// On Desktop
+			@media (min-width: 992px){
+				padding-bottom: inherit;
+				
+				.container-nav-jpskin{
+					display: flex;
+					align-items: center;
+					padding: 0 15px;;
+					
+					.container-a > a{
+						padding: 16px 24px 16px;
+						position: relative;
+						
+						.icon{
+							display: inline-block;
+						}
+						
+						&:after{
+							content: "";
+							position: absolute;
+							left: 0;
+							right: 0;
+							bottom: 0;
+							height: 0;
+							background-color: @main-color;
+							.transition-jpskin();
+						}
+						&:hover,&:focus,
+						&.current{
+							border-left: inherit;
+							&:after{
+								height: 3px;
+								background-color: @contrast-main-color;
+							}
+						}
+					}
+					
+					.submenu{
+						position: absolute;
+						z-index: 100;
+						min-width: 100%;
+						margin-top: 10px;
+						.box-shadow-menu();
+						
+						.list-group-item {
+							background-color: @jpskin-white;
+							color: @jpskin-black;
+							padding: 10px 15px;
+							
+							&.current{
+								border-left: 4px solid @main-color;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		@media (min-width: 992px){
+			.box-shadow-menu();
+		}
+		
+		@media (max-width: 991px){
+			
+			.container-menu{
+				padding: 0;
+				
+				.burger{
+					margin-bottom: 10px;
+					
+					span{
+						background-color: @contrast-main-color;
+						.transition-jpskin();
+					}
+				}
+			}
+		}
+	}
+	
+	.topbar-pull.pull-jpskin{
+		background-color: @main-color;
+		border-radius: 4px;
+		height: 22px;
+		width: 44px;
+		padding: 4px 0;
+		z-index: -1;
+		margin: -6px auto 0 auto;
+		cursor: pointer;
+		
+		.line{
+			background-color: @contrast-main-color;
+			height: 2px;
+			width: 18px;
+			display: block;
+			margin: 2px auto 1px;
+		}
+	}
+}
+
+
+// -------------------------------------------------------------------
+// JPlatformSkin Menu vertical
+// -------------------------------------------------------------------
+
+.vertical-menu-jpskin.verticalMenu  {
+	
+	background: transparent;
+	
+	.jalios-menu-vertical {
+		
+		.list-group {
+			background: transparent;
+			border: 0;
+			margin-bottom: 0;
+			
+			.list-group-item {
+				padding: 10px 20px;
+				background: transparent;
+				border: none;
+				border-bottom: 1px solid @jpskin-grey-light;
+				color: @action-color;
+				.transition-jpskin-slow();
+				
+				&:after {
+					content: "";
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					height: 0;
+					background-color: @jpskin-white;
+					max-width: 100%;
+					.transition-jpskin();
+				}
+				
+				&.active {
+					
+					&:after{
+						width: 4px;
+						background-color: @action-color;
+						height: 100%;
+					}
+				}
+				
+				&:hover {
+					color: @action-color;
+					.transition-jpskin-slow();
+					border-bottom: 1px solid @jpskin-grey-light;
+					background: @hover-color;
+				}
+				
+				&.active {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+
+
+
+//----------------------------------------------------------------------
+//	JPlatformSkin horizontal-menu
+//----------------------------------------------------------------------
+.horizontal-menu-jpskin {
+	margin: 0;
+	padding: 0;
+	background: @jpskin-white;
+	list-style-type: none;
+	.transition-jpskin();
+	.br();
+	
+	.container-item {
+		flex-direction: column;
+		
+		@media screen and (min-width: 991px){
+			flex-direction: row;
+		}
+	}
+		
+	li, li:last-child {
+		
+		height: 100%;
+		a {
+			color: @main-color;
+			font-weight: initial;
+			padding: 10px 40px;
+			.fs-14();
+			border-bottom:  1px solid @jpskin-grey-light;
+			
+			@media screen and (min-width: 991px) {
+				border-bottom: 0;
+			}
+			
+			&:after {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 0;
+				top: inherit;
+				background-color: @jpskin-white;
+				max-width: 100%;
+				
+				&:after {
+					top: inherit;
+					bottom: 0;
+				}
+				
+				@media screen and (min-width: 991px) {
+					.transition-jpskin();
+				}
+			}
+			
+			&.active {
+				font-weight: bold;
+			}
+				
+			&:hover,&:focus,&.current, &.active {
+				
+				color: @main-color;
+				
+				
+				&:after {
+					width: 4px;
+					max-width: 4px;
+					overflow: hidden;
+					height: 100%;
+					background-color: @main-color;
+					
+					@media screen and (min-width: 991px){
+						height: 3px;
+						width: 100%;
+						bottom: 0;
+						max-width: 100%;
+					}
+				}
+			}
+		}
+	}
+	li:last-child {
+		a {
+			border-bottom: none;
+		}
+	}
+}
